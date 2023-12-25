@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MergeCsvs": {
+      "commandName": "Project",
+      "commandLineArgs": "-f \"C:\\Scratch\\RootFolder\""
+    }
+  }
+}
