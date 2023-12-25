@@ -3,7 +3,7 @@ A script to merge common csvs in subfolders from a root folder
 
 The command line is
 
-MergeCsvs.exe - f "<Path to Root Folder>"
+MergeCsvs.exe - f "[Path to Root Folder]"
 
 E.g.
 
