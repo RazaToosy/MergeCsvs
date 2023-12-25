@@ -5,8 +5,6 @@ The command line is
 
 MergeCsvs.exe - f "[Path to Root Folder]"
 
-E.g.
+The resultant csvs are exported to the Output folder off the root folder.
 
-MergeCsvs.exe -f "C:\Scratch\RootFolder"
-
-will create the merged csvs in the folder C:\Scratch\RootFolder\Output
+E.g. MergeCsvs.exe -f "C:\Scratch\RootFolder" will create the merged csvs in the folder C:\Scratch\RootFolder\Output
