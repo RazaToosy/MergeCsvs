@@ -10,16 +10,15 @@ namespace MergeCsvs.Services
     {
         public void ConcatenateCsvFiles(List<string> sourceFiles, string destinationFile)
         {
+            bool isFirstFile = true;
             // Open the input file for reading
             using (var outputWriter = new StreamWriter(destinationFile))
             {
-                bool isFirstFile = true;
                 foreach (var inputFile in sourceFiles)
                 {
                     using (var inputReader = new StreamReader(inputFile))
                     {
                         string line;
-                        bool isHeaderLine = true;
 
                         while ((line = inputReader.ReadLine()) != null)
                         {
@@ -35,25 +34,21 @@ namespace MergeCsvs.Services
                                 continue;
                             }
 
-                            if (line.StartsWith("Complete results are available"))
+                            if (line.Contains("Complete results are available"))
                             {
                                 // Skip the line and set the flag to skip the next line as well
                                 continue;
                             }
 
-                            if (isHeaderLine)
+                            if (!isFirstFile && line.Contains("EMIS"))
                             {
-                                // Write header only for the first file
-                                if (isFirstFile) outputWriter.WriteLine(line);
-                                isHeaderLine = false;
+                                // Skip the line and set the flag to skip the next line as well
+                                continue;
                             }
-                            else
-                            {
-                                outputWriter.WriteLine(line);
-                            }
+                            outputWriter.WriteLine(line);
                         }
-                        isFirstFile = false;
                     }
+                    isFirstFile = false;
                 }
             }
         }
